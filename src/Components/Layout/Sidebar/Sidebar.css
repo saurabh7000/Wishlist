@@ -1,0 +1,182 @@
+.sidebar-container {
+  width: 25rem;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  background-color: aliceblue;
+  padding: 1rem;
+}
+
+.logo-container {
+  color: red;
+  margin: 0.2rem;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin: 0.5rem;
+  border: 1px solid grey;
+  padding: 0.2rem 0rem 0.2rem 0.2rem;
+  width: 91%;
+  height: 3rem;
+  color: grey;
+  border-radius: 0.5rem;
+  background-color: white;
+}
+
+.search-container > input {
+  outline: none;
+  border: none;
+  height: 91%;
+  width: 91%;
+  font-size: 1rem;
+  padding: 0.2rem;
+}
+
+.search-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.4rem;
+  width: 3rem;
+  background-color: rgb(0, 145, 255);
+  color: white;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.search-icon :hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.home-btn {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  background-color: red;
+  color: white;
+  border: 1px solid grey;
+  margin: 0.5rem;
+  padding: 0.2rem;
+  width: 91%;
+  height: 3rem;
+  border-radius: 0.5rem;
+}
+
+.home-btn:hover {
+  cursor: pointer;
+}
+
+.list-container {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 91%;
+  margin: 0.5rem;
+  padding-left: 0.5rem;
+  height: 3rem;
+  border: 1px solid grey;
+  border-radius: 0.5rem;
+}
+
+.list-container:hover {
+  cursor: pointer;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  width: 91%;
+  height: 3rem;
+  justify-content: space-between;
+  border: 1px solid grey;
+  padding: 0.2rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  margin-top: auto;
+}
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.info > img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 30px;
+  padding: 0.5rem;
+}
+
+.user-info > img:hover {
+  cursor: pointer;
+}
+
+.icons {
+  padding: 0.5rem;
+}
+
+.icons:hover {
+  cursor: pointer;
+}
+
+.menu-profile {
+  margin: 0.2rem;
+  padding: 0.2rem;
+}
+
+.menu-logout {
+  color: red;
+  margin: 0.2rem;
+  padding: 0.2rem;
+}
+
+/* Media Query */
+
+@media only screen and (max-width: 600px) {
+  .sidebar-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 191vw;
+  }
+
+  .home-btn {
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    padding: 0.2rem 1rem 0.2rem 1rem;
+  }
+  .home-btn > h3 {
+    display: none;
+  }
+
+  .list-container {
+    justify-content: center;
+    padding: 0rem 0.2rem 0rem 0.2rem;
+    height: 3.4rem;
+    margin: 0;
+    width: 10rem;
+  }
+
+  .user-info {
+    margin-top: 0.5rem;
+    justify-content: center;
+    width: max-content;
+  }
+
+  .info > img {
+    padding: 0.2rem;
+  }
+
+  .info > h4 {
+    display: none;
+  }
+
+  .icons {
+    margin: 0;
+    padding: 0;
+  }
+}

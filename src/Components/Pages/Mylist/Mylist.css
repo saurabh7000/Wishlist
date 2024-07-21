@@ -1,0 +1,44 @@
+.mylist-container {
+  width: 100vw;
+  display: flex;
+}
+
+.mylist {
+ 
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+  width: 100%;
+}
+
+.list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: start;
+  margin-left: 2rem;
+  margin-top: 5rem;
+}
+
+.empty-list {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .mylist-container {
+    flex-direction: column;
+  }
+  .mylist {
+    width: 172vw;
+  }
+
+  .list {
+    padding-left: 6rem;
+  }
+}

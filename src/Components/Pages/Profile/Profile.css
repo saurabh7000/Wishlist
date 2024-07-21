@@ -1,0 +1,57 @@
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: aliceblue;
+  height: 100vh;
+}
+.profile-info {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid gray;
+  padding: 1rem;
+  width: 25rem;
+  border-radius: 5px;
+  box-shadow: 1px 1px 0.5px 0.5px;
+  margin: 5rem;
+  background-color: whitesmoke;
+}
+
+.profile-info > img {
+  width: 12rem;
+  height: 12rem;
+  border-radius: 10rem;
+}
+
+.profile-info > h2 {
+  margin: 1rem 1rem 0.5rem 1rem;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: large;
+  letter-spacing: 1px;
+  margin: 0.2rem;
+  width: 100%;
+  border-radius: 1rem;
+  color: white;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+#home {
+  background-color: red;
+}
+
+#list {
+  background-color: rgb(88, 224, 176);
+}
+
+#logout {
+  background-color: rgb(2, 146, 249);
+}
