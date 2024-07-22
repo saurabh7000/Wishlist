@@ -14,7 +14,7 @@ export const getMovies = (title) => async (dispatch) => {
     dispatch({ type: MOVIE_SEARCHED_REQUEST });
 
     const { data } = await axios.get(
-      `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&t=${title}`
+      `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&t=${title}`
     );
 
     dispatch({
@@ -36,7 +36,7 @@ export const getMovieInfo = (id) => async (dispatch) => {
     });
 
     const { data } = await axios.get(
-      `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&i=${id}&plot=full`
+      `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&i=${id}&plot=full`
     );
 
     dispatch({
