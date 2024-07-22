@@ -8,10 +8,11 @@ import Default_Poster from "../../../Images/Default_Poster.jpg";
 const Movieslist = ({ movie }) => {
   const navigate = useNavigate();
   const { Title, Year, imdbRating, Poster, imdbID } = movie;
-  const rating = imdbRating * 10 || 0;
+
+  const rating = (imdbRating !== "N/A" ? imdbRating * 10 : "N/A");
   const title = Title || "NA";
-  const year = Year || 0;
-  const poster = Poster || Default_Poster;
+  const year = (Year !== "N/A" ? movie.Year : "N/A");
+  const poster = (Poster === "N/A" ? Default_Poster : Poster);
 
   const navigateToMovie = () => {
     let user = JSON.parse(localStorage.getItem("userInfo"));

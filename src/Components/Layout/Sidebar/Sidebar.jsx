@@ -134,13 +134,16 @@ const Sidebar = () => {
           MenuListProps={{
             "aria-labelledby": "basic-button",
           }}
+
+          sx={{width:"auto",position:"absolute"}}
+         
         >
-          <MenuItem onClick={handleClose}>
+          <MenuItem onClick={handleClose} sx={{width:"auto"}}>
             <h3 className="menu-profile" onClick={navigateProfile}>
               Profile
             </h3>
           </MenuItem>
-          <MenuItem>
+          <MenuItem sx={{width:"auto"}}>
             <h3 className="menu-logout" onClick={handleLogout}>
               Logout
             </h3>

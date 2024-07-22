@@ -41,4 +41,8 @@
   .list {
     padding-left: 6rem;
   }
+
+  .empty-list{
+    width: 86%;
+  }
 }

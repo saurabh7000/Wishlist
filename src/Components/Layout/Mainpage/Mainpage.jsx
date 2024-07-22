@@ -9,19 +9,19 @@ import Loading from "../../utils/Loading";
 import { useNavigate } from "react-router-dom";
 
 const Mainpage = () => {
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const { loading, movies } = useSelector((state) => state.movies);
 
   useEffect(() => {
-    if (movies && movies.Error) {
-      toast.error(movies.Error, { position: "top-center" });
+    if (movies && (movies.Error || movies.message)) {
+      const message = movies.Error || movies.message;
+      toast.error(message, { position: "top-center" });
       dispatch(clearErrors());
       navigate("/");
     }
-  }, [dispatch,movies, movies.Error, navigate]);
+  }, [dispatch, movies, movies.Error, navigate]);
 
   const handleSearch = () => {
     if (!title) {
@@ -33,11 +33,8 @@ const Mainpage = () => {
     }
   };
 
-
-
   return (
     <div className="main-container">
-
       <div className="main-info">
         <h1>Welcome to Watchlists</h1>
         <p>
@@ -68,7 +65,7 @@ const Mainpage = () => {
             <Loading />
             <p>Please wait..!</p>
           </div>
-        ) : loading === false && !movies.Error ? (
+        ) : loading === false && !movies.Error && !movies.message ? (
           <Movieslist movie={movies} />
         ) : (
           <div className="empty-search"></div>

@@ -12,7 +12,10 @@ const initialState = {};
 const store = configureStore({
   reducer: rootReducer,
   preloadedState: initialState,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }).concat(),
   devTools: process.env.NODE_ENV !== "production",
 });
 

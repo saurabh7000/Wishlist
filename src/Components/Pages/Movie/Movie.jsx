@@ -4,7 +4,7 @@ import Sidebar from "../../Layout/Sidebar/Sidebar";
 import Rating from "../../utils/Rating";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getMovieInfo } from "../../../Redux/Actions";
+import { clearErrors, getMovieInfo } from "../../../Redux/Actions";
 import Meta from "../../utils/Meta";
 import Loading from "../../utils/Loading";
 import { toast } from "react-toastify";
@@ -32,6 +32,14 @@ const Movie = () => {
 
   const { loading, movie } = useSelector((state) => state.movieInfo);
 
+  useEffect(() => {
+    if (movie && movie.message) {
+      toast.error(movie.message, { position: "top-center" });
+      dispatch(clearErrors());
+      navigate("/");
+    }
+  }, [dispatch, movie, navigate]);
+
   let title = "NA";
   let year = 0;
   let rating = 0;
@@ -40,9 +48,9 @@ const Movie = () => {
 
   if (movie) {
     title = movie.Title;
-    year = movie.Year;
-    rating = movie.imdbRating * 10;
-    poster = movie.Poster;
+    year = movie.Year !== "N/A" ? movie.Year : "N/A";
+    rating = movie.imdbRating !== "N/A" ? movie.imdbRating * 10 : "N/A";
+    poster = movie.Poster !== "N/A" ? movie.Poster : poster;
     plot = movie.Plot;
   }
 

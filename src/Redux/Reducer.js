@@ -48,7 +48,7 @@ export const movieInfoReducer = (state = { movieInfo: [] }, action) => {
     case MOVIE_INFO_REQUEST: {
       return {
         loading: true,
-        movieInfo: [],
+        movie: [],
       };
     }
 
@@ -62,7 +62,7 @@ export const movieInfoReducer = (state = { movieInfo: [] }, action) => {
     case MOVIE_INFO_FAIL: {
       return {
         loading: false,
-        movies: action.payload,
+        movie: action.payload,
       };
     }
 
