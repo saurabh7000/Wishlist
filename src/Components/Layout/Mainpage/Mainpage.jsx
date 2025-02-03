@@ -21,7 +21,7 @@ const Mainpage = () => {
       dispatch(clearErrors());
       navigate("/");
     }
-  }, [dispatch, movies, movies.Error, navigate]);
+  }, [dispatch, movies,  navigate]);
 
   const handleSearch = () => {
     if (!title) {
