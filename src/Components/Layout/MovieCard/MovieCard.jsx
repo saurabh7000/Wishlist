@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import Default_Poster from "../../../Images/Default_Poster.jpg";
 const Movieslist = ({ movie }) => {
   const navigate = useNavigate();
+  const user = localStorage.getItem("userInfo");
   const { Title, Year, imdbRating, Poster, imdbID } = movie;
 
   const rating = imdbRating !== "N/A" ? imdbRating * 10 : "N/A";
@@ -27,7 +28,7 @@ const Movieslist = ({ movie }) => {
       <div className="card" onClick={navigateToMovie}>
         <div className="poster">
           <img src={poster} alt="poster" className="posterImage" />
-          <CardIcons movie={movie} />
+          {user && <CardIcons movie={movie} />}
         </div>
 
         <div className="card-info">

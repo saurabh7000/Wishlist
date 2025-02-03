@@ -9,19 +9,6 @@ const CardIcons = ({ movie }) => {
   const [watchList, setWatchList] = useState([]);
   const [watched, setWatched] = useState(false);
 
-  useEffect(() => {
-    const storedList = JSON.parse(localStorage.getItem("myList")) || [];
-    const storedWatchList =
-      JSON.parse(localStorage.getItem("watchedList")) || [];
-    setMyList(storedList);
-    setWatchList(storedWatchList);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("watchedList", JSON.stringify(watchList));
-    setWatched(watchList.some((list) => list.imdbID === movie.imdbID));
-  }, [watchList, movie]);
-
   const checkIdPresentInMylist = useMemo(() => {
     return myList.some((list) => list.imdbID === movie.imdbID);
   }, [myList, movie]);
@@ -69,6 +56,19 @@ const CardIcons = ({ movie }) => {
     }
   };
 
+  useEffect(() => {
+    const storedList = JSON.parse(localStorage.getItem("myList")) || [];
+    const storedWatchList =
+      JSON.parse(localStorage.getItem("watchedList")) || [];
+    setMyList(storedList);
+    setWatchList(storedWatchList);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("watchedList", JSON.stringify(watchList));
+    setWatched(watchList.some((list) => list.imdbID === movie.imdbID));
+  }, [watchList, movie]);
+
   return (
     <>
       {checkIdPresentInMylist ? (
@@ -76,6 +76,7 @@ const CardIcons = ({ movie }) => {
       ) : (
         <AddSharpIcon className="add-clear-Icon" onClick={addMovieToMyList} />
       )}
+
       <CheckIcon
         className={watched ? "checkIconTrue" : "checkIconFalse"}
         onClick={toggleWatched}
