@@ -11,14 +11,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/" element={<Home />} />
         <Route
           path="/wishlists/profile"
           element={
@@ -27,14 +20,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/watchlists/movie/:id"
-          element={
-            <ProtectedRoute>
-              <Movie />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/watchlists/movie/:id" element={<Movie />} />
         <Route
           path="/watchlists/mylist"
           element={
@@ -43,7 +29,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-     
       </Routes>
     </Router>
   );

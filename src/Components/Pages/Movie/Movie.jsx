@@ -59,15 +59,24 @@ const Movie = () => {
   }, [myList, id]);
 
   const addMovieToMyList = (e) => {
-    e.stopPropagation();
-    if (!checkIdPresentInMylist) {
-      const updatedList = [...myList, movie];
-      setMyList(updatedList);
-      localStorage.setItem("myList", JSON.stringify(updatedList));
+    let user = JSON.parse(localStorage.getItem("userInfo"));
+
+    if (user) {
+      e.stopPropagation();
+      if (!checkIdPresentInMylist) {
+        const updatedList = [...myList, movie];
+        setMyList(updatedList);
+        localStorage.setItem("myList", JSON.stringify(updatedList));
+      }
+      toast.success("Movie added to My List successfully.", {
+        position: "top-center",
+      });
+    } else {
+      navigate("/login");
+      toast.error("Please login to access this resource", {
+        position: "top-right",
+      });
     }
-    toast.success("Movie added to My List successfully.", {
-      position: "top-center",
-    });
   };
 
   const removeMovieFromMyList = (e) => {

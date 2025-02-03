@@ -9,24 +9,16 @@ const Movieslist = ({ movie }) => {
   const navigate = useNavigate();
   const { Title, Year, imdbRating, Poster, imdbID } = movie;
 
-  const rating = (imdbRating !== "N/A" ? imdbRating * 10 : "N/A");
+  const rating = imdbRating !== "N/A" ? imdbRating * 10 : "N/A";
   const title = Title || "NA";
-  const year = (Year !== "N/A" ? movie.Year : "N/A");
-  const poster = (Poster === "N/A" ? Default_Poster : Poster);
+  const year = Year !== "N/A" ? movie.Year : "N/A";
+  const poster = Poster === "N/A" ? Default_Poster : Poster;
 
   const navigateToMovie = () => {
-    let user = JSON.parse(localStorage.getItem("userInfo"));
-    if (!user) {
-      toast.error("Please login to access this resource !", {
-        position: "top-center",
-      });
-      navigate("/login");
+    if (imdbID) {
+      navigate(`/watchlists/movie/${imdbID}`);
     } else {
-      if (imdbID) {
-        navigate(`/watchlists/movie/${imdbID}`);
-      } else {
-        toast.error("something went wrong.Please try again!");
-      }
+      toast.error("something went wrong.Please try again!");
     }
   };
 

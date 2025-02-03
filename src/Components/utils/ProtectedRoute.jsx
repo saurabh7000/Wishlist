@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { Bounce, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const ProtectedRoute = ({ children }) => {
   const user = localStorage.getItem("userInfo");

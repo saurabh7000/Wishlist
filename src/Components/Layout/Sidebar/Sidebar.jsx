@@ -29,15 +29,11 @@ const Sidebar = () => {
   let user = JSON.parse(localStorage.getItem("userInfo"));
 
   const navigateHome = () => {
-    user = JSON.parse(localStorage.getItem("userInfo"));
-    if (!user) {
-      toast.error("Please login to access this resource !", {
-        position: "top-center",
-      });
-      navigate("/login");
-    } else {
-      navigate("/");
-    }
+    navigate("/");
+  };
+
+  const handleLogin = () => {
+    navigate("/login");
   };
 
   const navigateList = () => {
@@ -64,7 +60,6 @@ const Sidebar = () => {
     }
   };
 
-  // Menu
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -87,7 +82,6 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar-container">
-
       <div className="logo-container">
         <h1>Watchlists</h1>
       </div>
@@ -116,7 +110,7 @@ const Sidebar = () => {
       <div className="user-info">
         <div className="info">
           <img src={Profile} alt="user" />
-          <h4>{user.name}</h4>
+          <h4>{user ? user.name : "Guest"}</h4>
         </div>
         <MoreVertIcon
           className="icons"
@@ -134,23 +128,30 @@ const Sidebar = () => {
           MenuListProps={{
             "aria-labelledby": "basic-button",
           }}
-
-          sx={{width:"auto",position:"absolute"}}
-         
+          sx={{ width: "auto", position: "absolute" }}
         >
-          <MenuItem onClick={handleClose} sx={{width:"auto"}}>
-            <h3 className="menu-profile" onClick={navigateProfile}>
-              Profile
-            </h3>
-          </MenuItem>
-          <MenuItem sx={{width:"auto"}}>
-            <h3 className="menu-logout" onClick={handleLogout}>
-              Logout
-            </h3>
-          </MenuItem>
+          {user ? (
+            <>
+              <MenuItem onClick={handleClose} sx={{ width: "auto" }}>
+                <h3 className="menu-profile" onClick={navigateProfile}>
+                  Profile
+                </h3>
+              </MenuItem>
+              <MenuItem sx={{ width: "auto" }}>
+                <h3 className="menu-logout" onClick={handleLogout}>
+                  Logout
+                </h3>
+              </MenuItem>
+            </>
+          ) : (
+            <MenuItem sx={{ width: "auto" }}>
+              <h3 className="menu-logout" onClick={handleLogin}>
+                Login
+              </h3>
+            </MenuItem>
+          )}
         </Menu>
       </div>
-      
     </div>
   );
 };
